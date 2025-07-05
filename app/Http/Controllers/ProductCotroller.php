@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Controllers\ProductCotroller;
+use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 class ProductCotroller extends Controller
@@ -15,7 +16,7 @@ class ProductCotroller extends Controller
 
     public function create()
     {
-        //
+        return Inertia::render('Products/Create', []);
     }
 
     public function store(Request $request)
@@ -23,17 +24,13 @@ class ProductCotroller extends Controller
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
+
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
+
     public function edit(string $id)
     {
         //
@@ -47,9 +44,7 @@ class ProductCotroller extends Controller
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id)
     {
         //
