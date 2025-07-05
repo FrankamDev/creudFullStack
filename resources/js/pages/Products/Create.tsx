@@ -26,16 +26,15 @@ export default function Index() {
             <form action="" className="space-y-4">
                 <div className="w-1/2 gap-1.5 p-4">
                     <Label>Nom du produit</Label>
-                    <Input placeholder="Entrer le nom du produit" value={data.name} />
+                    <Input placeholder="Entrer le nom du produit" value={data.name} onChange={(e) => setData('name', e.target.value)} />
                 </div>
                 <div className="w-1/2 gap-1.5 p-4">
                     <Label>Prix</Label>
-                    <Input placeholder="Entrer le prix du produit" value={data.price} />
+                    <Input placeholder="Entrer le prix du produit" value={data.price} onChange={(e) => setData('price', e.target.value)} />
                 </div>
                 <div className="w-1/2 p-4">
                     <Label htmlFor="description">Description</Label>
-                    {/* <Input placeholder="Description du produit" /> */}
-                    <Textarea value={data.description} />
+                    <Textarea value={data.description} onChange={(e) => setData('description', e.target.value)} />
                 </div>
                 <Button className="m-4" type="submit">
                     Creer
