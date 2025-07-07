@@ -1,9 +1,10 @@
 // import { PlaceholderPattern } from '@/components/ui/placeholder-pattern';
 
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import AppLayout from '@/layouts/app-layout';
-
-import { Head, Link } from '@inertiajs/react';
+import { Megaphone } from 'lucide-react';
+import { Head, Link, usePage } from '@inertiajs/react';
 
 const breadcrumbs = [
     {
@@ -11,8 +12,13 @@ const breadcrumbs = [
         href: '/products',
     },
 ];
-
+interface PageProps {
+    flash: {
+        message?: string;
+    };
+}
 export default function Index() {
+    const { flash } = usePage().props as pageProps;
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Produits" />
@@ -20,6 +26,15 @@ export default function Index() {
                 <Link href={route('products.create')}>
                     <Button>Creer un produit</Button>
                 </Link>
+            </div>
+            <div className="m-4">
+                {flash.message && (
+                    <Alert>
+                        <Megaphone className="h-4 w-4" />
+                        <AlertTitle>Notification!</AlertTitle>
+                        <AlertDescription>{flash.message}</AlertDescription>
+                    </Alert>
+                )}
             </div>
         </AppLayout>
     );

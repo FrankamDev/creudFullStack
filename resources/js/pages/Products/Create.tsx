@@ -20,10 +20,23 @@ export default function Index() {
         price: '',
         description: '',
     });
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        post(route('products.store'));
+        console.log(data);
+    };
     return (
         <AppLayout breadcrumbs={breadcrumbs}>
             <Head title="Creer un nouveau produit" />
-            <form action="" className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
+                {Object.keys(errors).length > 0 && (
+                    <ul className="mx-30 mt-2 w-1/4 rounded-lg bg-red-400 p-4">
+                        <h4 className="text-red-600">Erreur</h4>
+                        {Object.entries(errors).map(([key, message]) => (
+                            <li key={key}>{message}</li>
+                        ))}
+                    </ul>
+                )}
                 <div className="w-1/2 gap-1.5 p-4">
                     <Label>Nom du produit</Label>
                     <Input placeholder="Entrer le nom du produit" value={data.name} onChange={(e) => setData('name', e.target.value)} />

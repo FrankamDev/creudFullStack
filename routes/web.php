@@ -12,6 +12,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         return Inertia::render('dashboard');
     })->name('dashboard');
 Route::get('/products', [ProductCotroller::class, 'index'])->name('products.index');
+Route::post('/products', [ProductCotroller::class, 'store'])->name('products.store');
 Route::get('/products/create', [ProductCotroller::class, 'create'])->name('products.create');
 });
 
